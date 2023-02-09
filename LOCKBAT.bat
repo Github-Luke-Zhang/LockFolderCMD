@@ -2,45 +2,34 @@
 cls 
 :start 
 cls 
-echo ******************************************************************************* 
-echo * * 
-echo * BAT ¼Ó ÃÜ * 
-echo * * 
-echo ******************************************************************************* 
+echo =============================================================================== 
+echo LOCK BAT: Only has a Chinese Edition.
+echo åŠ å¯† æ‰¹å¤„ç†æ–‡ä»¶ åªæœ‰ä¸­æ–‡ç‰ˆã€‚
+echo Please Translate Chinese into English, if you want to use this tool.
+echo ===============================================================================
 echo. 
-echo. 
-echo. 
-echo ¡ï ¿ÉÒÔÒ»´ÎÐÔ³É¹¦¼ÓÃÜÈÎºÎÅú´¦ÀíÎÄ¼þ, ¸üÊ¡ÊÂ. 
-echo. 
-echo ¡ï ¿ÉÒÔÓÉÄúÊäÈëÈÎÒâÐèÒª¼ÓÃÜµÄÅú´¦Àí, ¼ÓÃÜÁé»îÐÔ¸ü´ó. 
-echo. 
-echo ¡ï ÄÜ¹»×Ô¶¯ÅÐ¶Ï´íÎóÊäÈë, ¸ü¼ÓÈËÐÔ»¯. 
-echo. 
-echo ËµÃ÷: ÔÚÏÂÃæÊäÈëÐèÒª¼ÓÃÜµÄÅú´¦ÀíÎÄ¼þ, Ö±½ÓÊäÈëÅú´¦ÀíÎÄ¼þÃûÎª¼ÓÃÜµ±Ç°Ä¿Â¼ÏÂµÄBAT,Ò²¿ÉÒÔ´øÂ·¾¶Ö¸¶¨ÈÎÒâBAT. µ±Ç°Ä¿Â¼ÏÂÉú³ÉµÄencrypt.batÎÄ¼þ¼´Îª¼ÓÃÜµÄÅú´¦Àí. 
-echo. 
-echo. 
-echo. 
-set /p file=ÇëÊäÈëÐèÒª¼ÓÃÜµÄÅú´¦Àíºó°´»Ø³µ¼ü(q=ÍË³ö): 
+echo è¯´æ˜Ž: åœ¨ä¸‹é¢è¾“å…¥éœ€è¦åŠ å¯†çš„æ‰¹å¤„ç†æ–‡ä»¶, ç›´æŽ¥è¾“å…¥æ‰¹å¤„ç†æ–‡ä»¶åä¸ºåŠ å¯†å½“å‰ç›®å½•ä¸‹çš„æ‰¹å¤„ç†æ–‡ä»¶,ä¹Ÿå¯ä»¥å¸¦è·¯å¾„æŒ‡å®šä»»æ„æ‰¹å¤„ç†æ–‡ä»¶ã€‚å½“å‰ç›®å½•ä¸‹ç”Ÿæˆçš„LOCKED.batæ–‡ä»¶å³ä¸ºåŠ å¯†çš„æ‰¹å¤„ç†æ–‡ä»¶ã€‚
+echo.
+echo ===============================================================================
+set /p file=è¯·è¾“å…¥éœ€è¦åŠ å¯†çš„æ‰¹å¤„ç†åŽæŒ‰å›žè½¦é”®(q=é€€å‡º): 
 if "%file%"=="q" goto quit 
 echo %file%|findstr /i "\.bat$">nul && goto go 
 echo %file%|findstr /i "\.cmd$">nul && goto go 
 cls 
 echo ============== 
-echo ÇëÕýÈ·ÊäÈë! 
+echo è¯·æ­£ç¡®è¾“å…¥! 
 echo ============== 
 echo. 
-echo. 
-echo °´ÈÎÒâ¼üÖØÐÂÊäÈë...... 
-pause>nul 
+pause
 goto start 
 :go 
 if not exist "%file%" goto newly 
 if exist encrypt.bat copy encrypt.bat encryptbak.bat 
 echo %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a %%%%a >"%tmp%\encrypt.tmp" 
-echo cls>>"%tmp%\encrypt.tmp" 
-type "%file%">>"%tmp%\encrypt.tmp" 
+echo cls>>"%tmp%\LOCKED.tmp" 
+type "%file%">>"%tmp%\LOCKED.tmp" 
 setlocal enabledelayedexpansion 
-for %%i in ("%tmp%\encrypt.tmp") do ( 
+for %%i in ("%tmp%\LOCKED.tmp") do ( 
 echo %%~zi >nul 2>nul 
 set size=%%~zi 
 set num=!size:~-1! 
@@ -48,39 +37,36 @@ set /a mod=!num!%%2
 if !mod! equ 0 (goto even) else (goto odd) 
 ) 
 :even 
-copy "%tmp%\encrypt.tmp" encrypt.bat 
-del "%tmp%\encrypt.tmp" 
+copy "%tmp%\LOCKED.tmp" LOCKED.bat 
+del "%tmp%\LOCKED.tmp" 
 cls 
 echo ========================== 
-echo Íê³ÉÅú´¦Àí¼ÓÃÜ^_^! 
+echo å®Œæˆæ‰¹å¤„ç†åŠ å¯†! 
 echo ========================== 
 echo. 
 echo. 
-echo °´ÈÎÒâ¼üÍË³ö...... 
-pause>nul 
+pause
 goto quit 
 :odd 
-echo. >>"%tmp%\encrypt.tmp" 
-copy "%tmp%\encrypt.tmp" encrypt.bat 
-del "%tmp%\encrypt.tmp" 
+echo. >>"%tmp%\LOCKED.tmp" 
+copy "%tmp%\LOCKED.tmp" LOCKED.bat 
+del "%tmp%\LOCKED.tmp" 
 cls 
 echo ========================== 
-echo ¹§Ï²Äã, Åú´¦Àí¼ÓÃÜ³É¹¦^^! 
+echo æ­å–œä½ , æ‰¹å¤„ç†åŠ å¯†æˆåŠŸ! 
 echo ========================== 
 echo. 
 echo. 
-echo °´ÈÎÒâ¼üÍË³ö...... 
+echo æŒ‰ä»»æ„é”®é€€å‡º...... 
 pause>nul 
 goto quit 
 :newly 
 cls 
 echo ================================ 
-echo ÕÒ²»µ½Åú´¦ÀíÎÄ¼þ, ÇëÖØÐÂÊäÈë! 
+echo æ‰¾ä¸åˆ°æ‰¹å¤„ç†æ–‡ä»¶, è¯·é‡æ–°è¾“å…¥! 
 echo ================================ 
 echo. 
-echo. 
-echo °´ÈÎÒâ¼ü¿ªÊ¼...... 
-pause>nul 
+pause
 goto start 
 :quit 
 exit
